@@ -1,6 +1,6 @@
-package repository;
+package repositories;
 
-import entity.Cart;
+import models.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

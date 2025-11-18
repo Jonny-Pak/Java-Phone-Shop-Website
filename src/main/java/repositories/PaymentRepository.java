@@ -1,6 +1,6 @@
-package repository;
+package repositories;
 
-import entity.Payment;
+import models.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 

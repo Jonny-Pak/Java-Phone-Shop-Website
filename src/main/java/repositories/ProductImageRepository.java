@@ -1,6 +1,6 @@
-package repository;
+package repositories;
 
-import entity.ProductImage;
+import models.ProductImage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
