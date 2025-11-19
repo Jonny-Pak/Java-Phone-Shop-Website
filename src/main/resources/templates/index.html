@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>PhoneSales - Trang chủ</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+  <header>
+    <h1><a th:href="@{/}">PhoneSales</a></h1>
+    <nav>
+      <a th:href="@{/}">Trang chủ</a> |
+      <a th:href="@{/products}">Sản phẩm</a> |
+      <a th:href="@{/login}">Đăng nhập</a> |
+      <a th:href="@{/register}">Đăng ký</a>
+    </nav>
+    <form th:action="@{/}" method="get" style="display:inline;">
+      <input type="text" name="q" placeholder="Tìm kiếm..." th:value="${q}">
+      <button type="submit">Tìm</button>
+    </form>
+  </header>
+
+  <main>
+    <h2>Sản phẩm</h2>
+    <div th:if="${#lists.isEmpty(products)}">
+      <p>Chưa có sản phẩm.</p>
+    </div>
+    <div th:each="p : ${products}">
+      <div style="border:1px solid #ddd; padding:8px; margin:8px;">
+        <h3 th:text="${p.productName}">Tên</h3>
+        <p>Thương hiệu: <span th:text="${p.brand}">Brand</span></p>
+        <p>Giá: <span th:text="${p.price}">0</span> VND</p>
+        <a th:href="@{|/products/${p.productId}|}">Xem chi tiết</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

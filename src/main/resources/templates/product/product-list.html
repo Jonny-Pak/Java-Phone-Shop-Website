@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách sản phẩm</title>
+</head>
+<body>
+  <header>
+    <h1><a th:href="@{/}">PhoneSales</a></h1>
+    <a th:href="@{/}">Trang chủ</a>
+  </header>
+  <main>
+    <h2>Danh sách sản phẩm</h2>
+    <form th:action="@{/products}" method="get">
+      <input type="text" name="q" placeholder="Tìm kiếm..." th:value="${q}">
+      <button type="submit">Tìm</button>
+    </form>
+
+    <div th:if="${#lists.isEmpty(products)}">Chưa có sản phẩm</div>
+    <div th:each="p : ${products}">
+      <div style="border:1px solid #ccc; padding:8px; margin:6px;">
+        <h3 th:text="${p.productName}">Tên SP</h3>
+        <p>Giá: <span th:text="${p.price}">0</span></p>
+        <a th:href="@{|/products/${p.productId}|}">Chi tiết</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
