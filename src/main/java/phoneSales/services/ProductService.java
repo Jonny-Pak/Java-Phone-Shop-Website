@@ -8,22 +8,25 @@ import java.util.List;
 
 @Service
 public class ProductService {
+
     @Autowired
     private ProductRepository productRepository;
 
-    // Lấy sản phẩm còn hàng để hiển thị trang chủ
+    // --- ĐÃ SỬA: Bỏ từ khóa 'static' ---
+    // Lấy sản phẩm còn hàng (active = true) để hiển thị trang chủ
     public List<Product> getAllActiveProducts() {
         return productRepository.findByIsActiveTrue();
     }
 
-    // Lấy tất cả sản phẩm (Admin)
+    // Lấy tất cả sản phẩm (Dùng cho Admin)
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
 
     // Xem chi tiết 1 sản phẩm
     public Product getProductById(Integer id) {
-        return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Không tìm thấy sản phẩm"));
+        return productRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Không tìm thấy sản phẩm có ID: " + id));
     }
 
     // Tìm kiếm sản phẩm
@@ -36,7 +39,7 @@ public class ProductService {
         return productRepository.findByCategoryCategoryId(categoryId);
     }
 
-    // Lưu sản phẩm
+    // Lưu sản phẩm (Thêm mới hoặc Cập nhật)
     public void saveProduct(Product product) {
         productRepository.save(product);
     }
