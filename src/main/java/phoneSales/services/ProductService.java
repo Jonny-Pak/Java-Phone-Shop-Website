@@ -12,7 +12,6 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    // --- ĐÃ SỬA: Bỏ từ khóa 'static' ---
     // Lấy sản phẩm còn hàng (active = true) để hiển thị trang chủ
     public List<Product> getAllActiveProducts() {
         return productRepository.findByIsActiveTrue();
