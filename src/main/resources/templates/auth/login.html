@@ -1,16 +1,119 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Đăng nhập</title>
+    <title>Đăng nhập - Phone Store</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" th:href="@{/images/icons/favicon.png}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/font-awesome-4.7.0/css/font-awesome.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/iconic/css/material-design-iconic-font.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/linearicons-v1.0.0/icon-font.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/animate/animate.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/css-hamburgers/hamburgers.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/select2/select2.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/vendor/perfect-scrollbar/perfect-scrollbar.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/util.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
 </head>
 <body>
-  <h1>Đăng nhập</h1>
-  <form th:action="@{/login}" method="post">
-    <label>Email: <input type="text" name="username"/></label><br/>
-    <label>Mật khẩu: <input type="password" name="password"/></label><br/>
-    <button type="submit">Đăng nhập</button>
-  </form>
-  <p>Chưa có tài khoản? <a th:href="@{/register}">Đăng ký</a></p>
+    
+    <header class="header-v4">
+        <div class="container-menu-desktop">
+            <div class="wrap-menu-desktop how-shadow1">
+                <nav class="limiter-menu-desktop container">
+                    <a href="/" class="logo">
+                        <img th:src="@{/images/icons/logo-01.png}" alt="IMG-LOGO">
+                    </a>
+                    <div class="menu-desktop">
+                        <ul class="main-menu">
+                            <li><a href="/">Trang chủ</a></li>
+                            <li><a href="/product">Sản phẩm</a></li>
+                            <li><a href="/cart">Giỏ hàng</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        
+        <div class="wrap-header-mobile">
+			<div class="logo-mobile">
+				<a href="/"><img th:src="@{/images/icons/logo-01.png}" alt="IMG-LOGO"></a>
+			</div>
+			<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+				<span class="hamburger-box">
+					<span class="hamburger-inner"></span>
+				</span>
+			</div>
+		</div>
+
+		<div class="menu-mobile">
+			<ul class="main-menu-m">
+				<li><a href="/">Trang chủ</a></li>
+                <li><a href="/cart">Giỏ hàng</a></li>
+			</ul>
+		</div>
+    </header>
+
+    <section class="bg0 p-t-104 p-b-116">
+        <div class="container">
+            <div class="flex-w flex-tr">
+                <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md m-lr-auto">
+                    
+                    <h4 class="mtext-105 cl2 txt-center p-b-30">
+                        Đăng Nhập
+                    </h4>
+
+                    <div th:if="${param.error}" class="alert alert-danger text-center m-b-20">
+                        Email hoặc mật khẩu không đúng!
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success text-center m-b-20">
+                        Đăng xuất thành công.
+                    </div>
+                    <div th:if="${param.success}" class="alert alert-success text-center m-b-20">
+                        Đăng ký thành công! Vui lòng đăng nhập.
+                    </div>
+
+                    <form th:action="@{/login}" method="post">
+                        
+                        <div class="bor8 m-b-20 how-pos4-parent">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" name="username" placeholder="Địa chỉ Email">
+                            <img class="how-pos4 pointer-none" th:src="@{/images/icons/icon-email.png}" alt="ICON" style="width: 18px; opacity: 0.5;">
+                        </div>
+
+                        <div class="bor8 m-b-20 how-pos4-parent">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="password" name="password" placeholder="Mật khẩu">
+                            <i class="fa fa-lock how-pos4 pointer-none" style="font-size: 18px; color: #aaa; left: 30px;"></i>
+                        </div>
+
+                        <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
+                            Đăng Nhập
+                        </button>
+                        
+                        <div class="flex-c-m stext-101 cl2 size-121 p-lr-15 trans-04 m-t-10">
+                            <p class="stext-111 cl2">Chưa có tài khoản? <a href="/register" class="cl1 hov-cl1">Đăng ký ngay</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg3 p-t-75 p-b-32">
+        <div class="container">
+            <p class="stext-107 cl6 txt-center">
+                Copyright &copy; 2025 Phone Store.
+            </p>
+        </div>
+    </footer>
+
+    <script th:src="@{/vendor/jquery/jquery-3.2.1.min.js}"></script>
+    <script th:src="@{/vendor/animsition/js/animsition.min.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/popper.js}"></script>
+    <script th:src="@{/vendor/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/vendor/select2/select2.min.js}"></script>
+    <script th:src="@{/vendor/perfect-scrollbar/perfect-scrollbar.min.js}"></script>
+    <script th:src="@{/js/main.js}"></script>
+
 </body>
 </html>
